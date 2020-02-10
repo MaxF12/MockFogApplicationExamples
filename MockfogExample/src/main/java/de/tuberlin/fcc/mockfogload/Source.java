@@ -38,12 +38,13 @@ public abstract class Source {
         JsonObject jsonObject = new JsonParser().parse(body).getAsJsonObject();
 
         for (Config.MeasurementType type:config.measurementTypes){
-            JsonElement measurement = jsonObject.get(type.name);
-            if (measurement == null){
+            String receivedType = jsonObject.get("type").getAsString();
+
+            if (!receivedType.equals(type.name)){
                 continue;
             }
 
-            double value = measurement.getAsDouble();
+            double value = jsonObject.get("value").getAsDouble();
 
             if (value < type.lowerThreshold){
                 System.out.println("Measurement for "+type.name+" violated lower threshold: "+value +" < "+type.lowerThreshold);
@@ -54,8 +55,8 @@ public abstract class Source {
             }
 
             Sink.sendToSinks(new Measurement(
-                    type.name,
-                    jsonObject.get("value").getAsDouble(),
+                    receivedType,
+                    value,
                     jsonObject.get("time").getAsInt(),
                     jsonObject.get("source").getAsString()));
         }

@@ -1,17 +1,13 @@
-email: "john.doe@example.com"
 sources:
   - type: http
     port: 4567
-  - type: udp
-    port: 4568
 measurementTypes:
   - name: "heartRate"
     lowerThreshold: 60
     upperThreshold: 100
 sinks:
   - type: influxDB
-    address: "http://localhost"
+    address: http://34.77.175.225
     port: 8086
-  - type: udp
-    address: "http://192.168.1.2"
-    port: 4568
+    user:
+    password:

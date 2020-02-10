@@ -8,8 +8,9 @@ import org.influxdb.dto.Query;
 class InfluxDBSink extends Sink{
     InfluxDB db;
 
-    public InfluxDBSink(String address, int port) {
-        db = InfluxDBFactory.connect(address + ":" + port);
+    public InfluxDBSink(String address, int port, String user, String password) {
+        String url = address + ":" + port;
+        db = InfluxDBFactory.connect(url, user, password);
 
         String dbName = "HeartRate";
 

@@ -15,7 +15,7 @@ public class HTTPSource extends Source {
 
             } catch (Exception e) {
                 response.status(400);
-                return e;
+                return e.getMessage();
             }
 
             response.status(200);

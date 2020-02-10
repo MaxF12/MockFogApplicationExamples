@@ -33,7 +33,7 @@ public abstract class Sink {
         switch (config.type){
             case "udp": s = new UDPSink(config.address, config.port);
             break;
-            case "influxDB": s = new InfluxDBSink(config.address, config.port);
+            case "influxDB": s = new InfluxDBSink(config.address, config.port, config.user, config.password);
             break;
             default:throw new IllegalArgumentException(config.type);
         }
