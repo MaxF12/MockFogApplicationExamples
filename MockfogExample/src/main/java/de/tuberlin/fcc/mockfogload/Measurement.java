@@ -4,9 +4,9 @@ public class Measurement {
     String type;
     String source;
     double value;
-    int time;
+    long time;
 
-    public Measurement(String type, double value, int time, String source) {
+    public Measurement(String type, double value, long time, String source) {
         this.type = type;
         this.value = value;
         this.time = time;

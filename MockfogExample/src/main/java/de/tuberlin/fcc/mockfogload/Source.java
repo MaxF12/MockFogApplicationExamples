@@ -57,7 +57,7 @@ public abstract class Source {
             Sink.sendToSinks(new Measurement(
                     receivedType,
                     value,
-                    jsonObject.get("time").getAsInt(),
+                    jsonObject.get("time").getAsLong(),
                     jsonObject.get("source").getAsString()));
         }
 
