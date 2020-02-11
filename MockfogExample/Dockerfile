@@ -7,4 +7,4 @@ COPY --chown=app config.yaml /app/config.yaml
 
 WORKDIR /app
 
-ENTRYPOINT ["java", "-server", "-XX:MaxRAMPercentage=75.00", "-jar", "heartrate.jar"]
+ENTRYPOINT ["java", "-server", "-XX:MaxRAMPercentage=75.00", "-jar", "heartrate.jar", "APP_CONFIG"]
